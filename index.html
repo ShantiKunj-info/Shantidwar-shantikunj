@@ -106,12 +106,13 @@
       .hamburger { display: flex; }
     }
 
-    /* Hero */
+    /* Hero with Animated Aura */
     .hero {
       text-align: center;
       padding: 100px 20px 60px;
       opacity: 0; transform: translateY(30px);
       transition: opacity 1.2s ease, transform 1.2s ease;
+      position: relative;
     }
     .hero.show { opacity: 1; transform: translateY(0); }
     .hero h1 {
@@ -121,51 +122,104 @@
       margin-bottom: 15px;
       text-shadow: 0 3px 10px rgba(0,0,0,0.15);
     }
-    .hero p {
+    
+    /* Gayatri Mantra with Animated Aura */
+    .gayatri-container {
+      position: relative;
+      display: inline-block;
+      margin: 20px 0;
+      padding: 25px 30px;
+      border-radius: 20px;
+    }
+    
+    .gayatri-aura {
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      right: -15px;
+      bottom: -15px;
+      border-radius: 25px;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .gayatri-aura::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(
+        from 0deg,
+        #8B5E3C 0deg,
+        #FFD580 60deg,
+        #d4a574 120deg,
+        #8B5E3C 180deg,
+        #FFD580 240deg,
+        #d4a574 300deg,
+        #8B5E3C 360deg
+      );
+      animation: spinAura 4s linear infinite;
+      opacity: 0.9;
+    }
+    
+    .gayatri-aura::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      right: 3px;
+      bottom: 3px;
+      background: rgba(253, 252, 251, 0.95);
+      border-radius: 22px;
+      z-index: 1;
+      box-shadow: 
+        inset 0 0 20px rgba(255, 213, 128, 0.3),
+        0 0 30px rgba(255, 213, 128, 0.6);
+    }
+    
+    .gayatri-text {
+      position: relative;
+      z-index: 2;
+      color: #8B5E3C;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-shadow: 0 2px 8px rgba(139, 94, 60, 0.3);
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 5px;
+    }
+    
+    @keyframes spinAura {
+      0% {
+        transform: rotate(0deg) scale(1);
+        filter: hue-rotate(0deg) brightness(1);
+      }
+      25% {
+        transform: rotate(90deg) scale(1.05);
+        filter: hue-rotate(15deg) brightness(1.2);
+      }
+      50% {
+        transform: rotate(180deg) scale(1);
+        filter: hue-rotate(30deg) brightness(1);
+      }
+      75% {
+        transform: rotate(270deg) scale(1.05);
+        filter: hue-rotate(15deg) brightness(1.2);
+      }
+      100% {
+        transform: rotate(360deg) scale(1);
+        filter: hue-rotate(0deg) brightness(1);
+      }
+    }
+    
+    .hero p:last-child {
       font-size: 1.15rem;
       color: #555;
       max-width: 700px;
-      margin: auto;
-    }
-
-    /* Mantra styling and aura */
-    /* color pulled from card h3: #8B5E3C */
-    .mantra-wrap { display: inline-block; position: relative; margin: 16px 0; }
-    .mantra {
-      color: #8B5E3C; /* same as Yagyopathy & Scientific Spirituality */
-      font-weight: 700;
-      font-size: 1.05rem;
-      padding: 10px 18px;
-      border-radius: 12px;
-      position: relative;
-      z-index: 2;
-      backdrop-filter: blur(2px);
-      text-shadow:
-        0 2px 6px rgba(139,94,60,0.28),
-        0 6px 18px rgba(255,213,128,0.18);
-      background: rgba(255,255,255,0.6);
-    }
-
-    /* Aura effect behind the mantra */
-    .mantra-wrap::before {
-      content: '';
-      position: absolute;
-      left: 50%; top: 50%; transform: translate(-50%, -50%);
-      width: calc(100% + 48px);
-      height: calc(100% + 40px);
-      background: radial-gradient(circle at 50% 40%, rgba(255,213,128,0.45), rgba(139,94,60,0.18) 30%, rgba(139,94,60,0.08) 45%, transparent 60%);
-      filter: blur(18px);
-      border-radius: 18px;
-      z-index: 1;
-      animation: auraPulse 3.8s ease-in-out infinite;
-      mix-blend-mode: screen;
-      pointer-events: none;
-    }
-
-    @keyframes auraPulse {
-      0% { transform: translate(-50%, -50%) scale(0.96); opacity: 0.9; }
-      50% { transform: translate(-50%, -50%) scale(1.06); opacity: 1; }
-      100% { transform: translate(-50%, -50%) scale(0.96); opacity: 0.9; }
+      margin: 20px auto 0;
     }
 
     /* Cards */
@@ -250,6 +304,8 @@
     @media (max-width: 600px) {
       .hero h1 { font-size: 2.2rem; }
       .hero p { font-size: 1rem; padding: 0 10px; }
+      .gayatri-container { padding: 20px 25px; margin: 15px 0; }
+      .gayatri-text { font-size: 1rem; }
       .cards { gap: 20px; }
       .card { width: 90%; padding: 25px 15px; }
       nav { padding: 12px 20px; }
@@ -274,14 +330,14 @@
     <section class="hero" id="home">
       <h1>🌸 Welcome to Shantidwar 🌸</h1>
       <h1>Shantikunj</h1>
-   <br>
-      <!-- Mantra wrapped so aura effect can be applied -->
-      <div class="mantra-wrap">
-        <p class="mantra"><strong>ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात्॥</strong></p>
+      <br>
+      <div class="gayatri-container">
+        <div class="gayatri-aura"></div>
+        <p class="gayatri-text"><strong>ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात्॥</strong></p>
       </div>
       <br>
       <p>
-"उस प्राणस्वरूप, दुःखनाशक, सुखस्वरूप, श्रेष्ठ, तेजस्वी, पापनाशक, देवस्वरूप परमात्मा को हम अपनी अंतरात्मा में धारण करें। वह परमात्मा हमारी बुद्धि को सन्मार्ग पर प्रेरित करे।"
+        "उस प्राणस्वरूप, दुःखनाशक, सुखस्वरूप, श्रेष्ठ, तेजस्वी, पापनाशक, देवस्वरूप परमात्मा को हम अपनी अंतरात्मा में धारण करें। वह परमात्मा हमारी बुद्धि को सन्मार्ग पर प्रेरित करे।"
       </p>
     </section>
     <hr>
@@ -294,17 +350,17 @@
       <div class="card">
         <h3>Yagyopathy</h3>
         <p>Explore the ancient wisdom of Yagya practices redefined for modern life.</p>
-  <button onclick="location.href='yagyopathy.html'">Open Website</button>
+        <button onclick="location.href='yagyopathy.html'">Open Website</button>
       </div>
       <div class="card">
         <h3>Scientific Spirituality</h3>
         <p>Bridging science and spirituality to awaken higher consciousness in life.</p>
-       <button onclick="location.href='scientificsprituality.html'">Open Website</button>
+        <button onclick="location.href='scientificsprituality.html'">Open Website</button>
       </div>
       <div class="card">
         <h3>------</h3>
         <p>______________________</p>
-         <button onclick="location.href='----.html'">Open Website</button>
+        <button onclick="location.href='----.html'">Open Website</button>
       </div>
       <div class="card">
         <h3>------</h3>
