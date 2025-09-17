@@ -106,7 +106,7 @@
       .hamburger { display: flex; }
     }
 
-    /* Hero with Animated Aura */
+    /* Hero with Simple Aura */
     .hero {
       text-align: center;
       padding: 100px 20px 60px;
@@ -123,96 +123,27 @@
       text-shadow: 0 3px 10px rgba(0,0,0,0.15);
     }
     
-    /* Gayatri Mantra with Animated Aura */
+    /* Gayatri Mantra with Simple Static Aura */
     .gayatri-container {
       position: relative;
       display: inline-block;
       margin: 20px 0;
-      padding: 25px 30px;
-      border-radius: 20px;
-    }
-    
-    .gayatri-aura {
-      position: absolute;
-      top: -15px;
-      left: -15px;
-      right: -15px;
-      bottom: -15px;
-      border-radius: 25px;
-      z-index: -1;
-      overflow: hidden;
-    }
-    
-    .gayatri-aura::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: conic-gradient(
-        from 0deg,
-        #8B5E3C 0deg,
-        #FFD580 60deg,
-        #d4a574 120deg,
-        #8B5E3C 180deg,
-        #FFD580 240deg,
-        #d4a574 300deg,
-        #8B5E3C 360deg
-      );
-      animation: spinAura 4s linear infinite;
-      opacity: 0.9;
-    }
-    
-    .gayatri-aura::after {
-      content: '';
-      position: absolute;
-      top: 3px;
-      left: 3px;
-      right: 3px;
-      bottom: 3px;
-      background: rgba(253, 252, 251, 0.95);
-      border-radius: 22px;
-      z-index: 1;
+      padding: 15px 20px;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.95);
       box-shadow: 
-        inset 0 0 20px rgba(255, 213, 128, 0.3),
-        0 0 30px rgba(255, 213, 128, 0.6);
+        0 0 20px rgba(255, 213, 128, 0.6),
+        0 0 40px rgba(139, 94, 60, 0.3),
+        inset 0 0 15px rgba(255, 213, 128, 0.2);
+      border: 2px solid rgba(255, 213, 128, 0.7);
     }
     
     .gayatri-text {
-      position: relative;
-      z-index: 2;
       color: #8B5E3C;
       font-family: 'Playfair Display', serif;
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       text-shadow: 0 2px 8px rgba(139, 94, 60, 0.3);
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      padding: 5px;
-    }
-    
-    @keyframes spinAura {
-      0% {
-        transform: rotate(0deg) scale(1);
-        filter: hue-rotate(0deg) brightness(1);
-      }
-      25% {
-        transform: rotate(90deg) scale(1.05);
-        filter: hue-rotate(15deg) brightness(1.2);
-      }
-      50% {
-        transform: rotate(180deg) scale(1);
-        filter: hue-rotate(30deg) brightness(1);
-      }
-      75% {
-        transform: rotate(270deg) scale(1.05);
-        filter: hue-rotate(15deg) brightness(1.2);
-      }
-      100% {
-        transform: rotate(360deg) scale(1);
-        filter: hue-rotate(0deg) brightness(1);
-      }
     }
     
     .hero p:last-child {
@@ -304,8 +235,8 @@
     @media (max-width: 600px) {
       .hero h1 { font-size: 2.2rem; }
       .hero p { font-size: 1rem; padding: 0 10px; }
-      .gayatri-container { padding: 20px 25px; margin: 15px 0; }
-      .gayatri-text { font-size: 1rem; }
+      .gayatri-container { padding: 12px 15px; margin: 15px 0; }
+      .gayatri-text { font-size: 1.1rem; }
       .cards { gap: 20px; }
       .card { width: 90%; padding: 25px 15px; }
       nav { padding: 12px 20px; }
@@ -332,7 +263,6 @@
       <h1>Shantikunj</h1>
       <br>
       <div class="gayatri-container">
-        <div class="gayatri-aura"></div>
         <p class="gayatri-text"><strong>ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात्॥</strong></p>
       </div>
       <br>
